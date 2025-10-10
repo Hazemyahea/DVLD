@@ -33,5 +33,32 @@ namespace PeopleDataBaseLayer
             return dataTable;
 
         }
+        static public bool IsPersonExist(int PersonID)
+        {
+            bool result = false;
+            SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
+            string query = "select 1 from People where People.PersonID = @PersonID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+            try
+            {
+                connection.Open();
+                object value = command.ExecuteScalar();
+                if (value != null)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+            finally
+            {
+                connection.Close();
+
+            }
+            return result;
+        }
     }
 }
