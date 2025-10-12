@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PeopleDataBaseLayer;
+using DVLD_DataAccessLayer;
 namespace DVLD
 {
     public partial class MainPeopleForm : Form

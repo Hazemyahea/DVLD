@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{22F87131-59E9-4562-BF8B-30FC6E43C078}</ProjectGuid>
+    <ProjectGuid>{E93F59AC-7036-4009-8780-095A723102C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PeopleDataBaseLayer</RootNamespace>
-    <AssemblyName>PeopleDataBaseLayer</AssemblyName>
+    <RootNamespace>DVLD_BusinessLayer</RootNamespace>
+    <AssemblyName>DVLD_BusinessLayer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,13 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ClsCountryBusiness.cs" />
+    <Compile Include="ClsPersonBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\clsConnection\clsConnection.csproj">
-      <Project>{4ea54ae9-444e-4365-b4b0-e7fd12ba8667}</Project>
-      <Name>clsConnection</Name>
+    <ProjectReference Include="..\PeopleDataBaseLayer\DVLD_DataAccessLayer.csproj">
+      <Project>{22f87131-59e9-4562-bf8b-30fc6e43c078}</Project>
+      <Name>DVLD_DataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

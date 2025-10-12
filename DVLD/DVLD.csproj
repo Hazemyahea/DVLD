@@ -107,9 +107,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PeopleDataBaseLayer\PeopleDataBaseLayer.csproj">
+    <ProjectReference Include="..\PeopleDataBaseLayer\DVLD_DataAccessLayer.csproj">
       <Project>{22f87131-59e9-4562-bf8b-30fc6e43c078}</Project>
-      <Name>PeopleDataBaseLayer</Name>
+      <Name>DVLD_DataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
