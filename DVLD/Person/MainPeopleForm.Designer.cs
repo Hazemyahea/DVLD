@@ -73,7 +73,7 @@
             this.sendMailToolStripMenuItem,
             this.callPhoneToolStripMenuItem});
             this.contextMenuStripManagePeople.Name = "contextMenuStripManagePeople";
-            this.contextMenuStripManagePeople.Size = new System.Drawing.Size(188, 196);
+            this.contextMenuStripManagePeople.Size = new System.Drawing.Size(188, 218);
             // 
             // showDetailesToolStripMenuItem
             // 
@@ -98,6 +98,7 @@
             this.editeToolStripMenuItem.Padding = new System.Windows.Forms.Padding(5);
             this.editeToolStripMenuItem.Size = new System.Drawing.Size(197, 32);
             this.editeToolStripMenuItem.Text = "Edite";
+            this.editeToolStripMenuItem.Click += new System.EventHandler(this.editeToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -106,6 +107,7 @@
             this.deleteToolStripMenuItem.Padding = new System.Windows.Forms.Padding(5);
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(197, 32);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // sendMailToolStripMenuItem
             // 

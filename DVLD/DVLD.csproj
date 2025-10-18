@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddUpdatePeople.cs">
+    <Compile Include="Person\AddUpdatePeople.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AddUpdatePeople.Designer.cs">
+    <Compile Include="Person\AddUpdatePeople.Designer.cs">
       <DependentUpon>AddUpdatePeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="addUpdatePerson.cs">
+    <Compile Include="Person\addUpdatePerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="addUpdatePerson.Designer.cs">
+    <Compile Include="Person\addUpdatePerson.Designer.cs">
       <DependentUpon>addUpdatePerson.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -64,24 +64,24 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainPeopleForm.cs">
+    <Compile Include="Person\MainPeopleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainPeopleForm.Designer.cs">
+    <Compile Include="Person\MainPeopleForm.Designer.cs">
       <DependentUpon>MainPeopleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddUpdatePeople.resx">
+    <EmbeddedResource Include="Person\AddUpdatePeople.resx">
       <DependentUpon>AddUpdatePeople.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="addUpdatePerson.resx">
+    <EmbeddedResource Include="Person\addUpdatePerson.resx">
       <DependentUpon>addUpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainPeopleForm.resx">
+    <EmbeddedResource Include="Person\MainPeopleForm.resx">
       <DependentUpon>MainPeopleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -107,9 +107,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PeopleDataBaseLayer\DVLD_DataAccessLayer.csproj">
-      <Project>{22f87131-59e9-4562-bf8b-30fc6e43c078}</Project>
-      <Name>DVLD_DataAccessLayer</Name>
+    <ProjectReference Include="..\DVLD_BusinessLayer\DVLD_BusinessLayer.csproj">
+      <Project>{e93f59ac-7036-4009-8780-095a723102c2}</Project>
+      <Name>DVLD_BusinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

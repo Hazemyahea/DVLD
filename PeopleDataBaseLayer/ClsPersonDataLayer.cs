@@ -69,7 +69,7 @@ namespace DVLD_DataAccessLayer
             int result = 0;
             SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
             string query = @"
-            INSERT INTO People (NationalNO, FirstName, SecondName, ThiredName, LastName, DateOfBirth, Gendor, Address, Phone, Email, NationalCountryID, ImagePath)
+            INSERT INTO People (NationalNO, FirstName, SecondName, ThirdName, LastName, DateOfBirth, Gendor, Address, Phone, Email, NationalityCountryID, ImagePath)
             VALUES (@NationalNO, @FirstName, @SecondName, @ThiredName, @LastName, @DateOfBirth, @Gendor, @Address, @Phone, @Email, @NationalCountryID, @ImagePath);
             SELECT SCOPE_IDENTITY();";
             SqlCommand command = new SqlCommand(query, connection);
@@ -114,14 +114,14 @@ namespace DVLD_DataAccessLayer
         SET NationalNO = @NationalNO,
             FirstName = @FirstName,
             SecondName = @SecondName,
-            ThiredName = @ThiredName,
+            ThirdName = @ThiredName,
             LastName = @LastName,
             DateOfBirth = @DateOfBirth,
             Gendor = @Gendor,
             Address = @Address,
             Phone = @Phone,
             Email = @Email,
-            NationalCountryID = @NationalCountryID,
+            NationalityCountryID = @NationalCountryID,
             ImagePath = @ImagePath
         WHERE PersonID = @PersonID;";
 
@@ -195,17 +195,17 @@ namespace DVLD_DataAccessLayer
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                    NationalNO = (string)reader["NationalNO"];
-                    FirstName = (string)reader["FirstName"];
-                    SecondName = (string)reader["SecondName"];
-                    ThiredName = (string)reader["ThiredName"];
-                    LastName = (string)reader["LastName"];
-                    DateOfBirth = (DateTime)reader["DateOfBirth"];
-                    Gendor = Convert.ToInt32(reader["Gendor"]);
-                    Address = (string)reader["Address"];
-                    Phone = (string)reader["Phone"];
-                    Email = (string)reader["Email"];
-                    NationalCountryID = Convert.ToInt32(reader["NationalCountryID"]);
+                    NationalNO = reader["NationalNO"]!=DBNull.Value ? (string)reader["NationalNO"] : "";
+                    FirstName = reader["FirstName"] != DBNull.Value ? (string)reader["FirstName"] : "";
+                    SecondName = reader["SecondName"] != DBNull.Value ? (string)reader["SecondName"] : "";
+                    ThiredName = reader["ThirdName"] != DBNull.Value ? (string)reader["ThirdName"] : "";
+                    LastName = reader["LastName"] != DBNull.Value ? (string)reader["LastName"] : "";
+                    DateOfBirth = reader["DateOfBirth"] != DBNull.Value ? (DateTime)reader["DateOfBirth"] : DateTime.MinValue;
+                    Gendor = reader["Gendor"] != DBNull.Value ? Convert.ToInt32(reader["Gendor"]) : 0;
+                    Address = reader["Address"] != DBNull.Value ? (string)reader["Address"] : "";
+                    Phone = reader["Phone"] != DBNull.Value ? (string)reader["Phone"] : "";
+                    Email = reader["Email"] != DBNull.Value ? (string)reader["Email"] : "";
+                    NationalCountryID = reader["NationalityCountryID"] != DBNull.Value ? Convert.ToInt32(reader["NationalityCountryID"]) : 0;
                     ImagePath = reader["ImagePath"] != DBNull.Value ? (string)reader["ImagePath"] : string.Empty;
                     isFound = true;
                 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DVLD_DataAccessLayer;
 namespace DVLD_BusinessLayer
 {
     public class ClsCountryBusiness
@@ -22,11 +23,29 @@ namespace DVLD_BusinessLayer
             this.CountryName = null;
             this.Mode = enMode.Add;
         }
-        private ClsCountryBusiness(int CountryID, string CountryName, enMode mode)
+        private ClsCountryBusiness(int CountryID, string CountryName)
         {
             this.CountryID = CountryID;
             this.CountryName = CountryName;
             Mode = enMode.update;
+        }
+        public static DataTable GetAllCountry()
+        {
+            return clsCountryDataLayer.GetAllCountry();
+        }
+        public static ClsCountryBusiness getCountrybyID(int CountryID)
+        {
+            string countryName = null;
+            
+            if (clsCountryDataLayer.GetCountrybyID(CountryID, ref countryName))
+            {
+                return new ClsCountryBusiness(CountryID, countryName);
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }
