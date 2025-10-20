@@ -43,6 +43,7 @@
             this.pictureBoxAddPeople = new System.Windows.Forms.PictureBox();
             this.labelFilterBy = new System.Windows.Forms.Label();
             this.comboBoxFilteBy = new System.Windows.Forms.ComboBox();
+            this.textBoxFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPeople)).BeginInit();
             this.contextMenuStripManagePeople.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,7 +74,7 @@
             this.sendMailToolStripMenuItem,
             this.callPhoneToolStripMenuItem});
             this.contextMenuStripManagePeople.Name = "contextMenuStripManagePeople";
-            this.contextMenuStripManagePeople.Size = new System.Drawing.Size(188, 218);
+            this.contextMenuStripManagePeople.Size = new System.Drawing.Size(188, 196);
             // 
             // showDetailesToolStripMenuItem
             // 
@@ -174,12 +175,23 @@
             this.comboBoxFilteBy.Name = "comboBoxFilteBy";
             this.comboBoxFilteBy.Size = new System.Drawing.Size(121, 21);
             this.comboBoxFilteBy.TabIndex = 5;
+            this.comboBoxFilteBy.SelectedValueChanged += new System.EventHandler(this.comboBoxFilteBy_SelectedValueChanged);
+            // 
+            // textBoxFilter
+            // 
+            this.textBoxFilter.Location = new System.Drawing.Point(228, 193);
+            this.textBoxFilter.Name = "textBoxFilter";
+            this.textBoxFilter.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFilter.TabIndex = 6;
+            this.textBoxFilter.Visible = false;
+            this.textBoxFilter.TextChanged += new System.EventHandler(this.textBoxFilter_TextChanged);
             // 
             // MainPeopleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 575);
+            this.Controls.Add(this.textBoxFilter);
             this.Controls.Add(this.comboBoxFilteBy);
             this.Controls.Add(this.labelFilterBy);
             this.Controls.Add(this.pictureBoxAddPeople);
@@ -214,6 +226,7 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendMailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem callPhoneToolStripMenuItem;
-    }
+        private System.Windows.Forms.TextBox textBoxFilter;
+        }
 }
 

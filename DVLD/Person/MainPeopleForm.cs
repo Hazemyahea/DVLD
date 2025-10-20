@@ -22,11 +22,23 @@ namespace DVLD
             dataGridViewPeople.DataSource = ClsPersonBusiness.GetAllPeople();
 
         }
+        private void _getPersonByID(int UserID) {
+            dataGridViewPeople.DataSource = ClsPersonBusiness.FindPersonByID_DataTable(UserID);
+            }
+
+        private void _getPersonNationalID(string NID) {
+            dataGridViewPeople.DataSource = ClsPersonBusiness.FindPersonByNationalNumberAsDataTable(NID);
+
+            }
         private void Form1_Load(object sender, EventArgs e)
         {
             _RefreshDate();
+            comboBoxFilteBy.Items.Add("Choose Filter");
+            comboBoxFilteBy.Items.Add("ID");
+            comboBoxFilteBy.Items.Add("National ID");
+            comboBoxFilteBy.SelectedIndex = 0;
 
-        }
+            }
 
         private void pictureBoxAddPeople_Click(object sender, EventArgs e)
         {
@@ -54,6 +66,37 @@ namespace DVLD
                 }
             _RefreshDate();
             }
-                
+
+        private void comboBoxFilteBy_SelectedValueChanged(object sender, EventArgs e) {
+
+            if (comboBoxFilteBy.SelectedIndex == 0)
+                return; 
+
+            textBoxFilter.Visible = true;
+            
+            }
+
+        private void textBoxFilter_TextChanged(object sender, EventArgs e) {
+            if (comboBoxFilteBy.SelectedIndex == 1 && !string.IsNullOrEmpty(textBoxFilter.Text)) {
+                if (int.TryParse(textBoxFilter.Text, out int personID)) {
+                    _getPersonByID(personID); 
+                    }
+                else {
+                    _RefreshDate();
+
+                    }
+                }
+            else {
+                _RefreshDate();
+                }
+            ///
+            if (comboBoxFilteBy.SelectedIndex == 2 && !string.IsNullOrEmpty(textBoxFilter.Text)) {
+                _getPersonNationalID(textBoxFilter.Text);
+                }
+            else {
+                _RefreshDate();
+                }
+
+            }
         }
 }

@@ -14,7 +14,7 @@ namespace DVLD_DataAccessLayer
         {
             DataTable dataTable = new DataTable();
             SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString);
-            string query = "select People.PersonID,People.FirstName,People.SecondName,People.ThirdName,People.DateOfBirth,People.Address,People.Phone,People.Email,\r\nCASE \r\nWHEN People.Gendor = 0 then 'Male'\r\nELSE 'Female' End As Gendor,Countries.CountryName\r\nfrom People inner join Countries on People.NationalityCountryID = Countries.CountryID";
+            string query = "select People.PersonID,People.NationalNo,People.FirstName,People.SecondName,People.ThirdName,People.DateOfBirth,People.Address,People.Phone,People.Email,\r\nCASE \r\nWHEN People.Gendor = 0 then 'Male'\r\nELSE 'Female' End As Gendor,Countries.CountryName\r\nfrom People inner join Countries on People.NationalityCountryID = Countries.CountryID";
             SqlCommand cmd = new SqlCommand(query, connection);
             try
             {
@@ -198,7 +198,7 @@ namespace DVLD_DataAccessLayer
                     NationalNO = reader["NationalNO"]!=DBNull.Value ? (string)reader["NationalNO"] : "";
                     FirstName = reader["FirstName"] != DBNull.Value ? (string)reader["FirstName"] : "";
                     SecondName = reader["SecondName"] != DBNull.Value ? (string)reader["SecondName"] : "";
-                    ThiredName = reader["ThirdName"] != DBNull.Value ? (string)reader["ThirdName"] : "";
+                    ThiredName = reader["ThirdName"] != DBNull.Value ? (string)reader["ThirdName"] : ""; 
                     LastName = reader["LastName"] != DBNull.Value ? (string)reader["LastName"] : "";
                     DateOfBirth = reader["DateOfBirth"] != DBNull.Value ? (DateTime)reader["DateOfBirth"] : DateTime.MinValue;
                     Gendor = reader["Gendor"] != DBNull.Value ? Convert.ToInt32(reader["Gendor"]) : 0;
@@ -238,14 +238,14 @@ namespace DVLD_DataAccessLayer
                     PersonID = Convert.ToInt32(reader["PersonID"]);
                     FirstName = (string)reader["FirstName"];
                     SecondName = (string)reader["SecondName"];
-                    ThiredName = (string)reader["ThiredName"];
+                    ThiredName = (string)reader["ThirdName"];
                     LastName = (string)reader["LastName"];
                     DateOfBirth = (DateTime)reader["DateOfBirth"];
                     Gendor = Convert.ToInt32(reader["Gendor"]);
                     Address = (string)reader["Address"];
                     Phone = (string)reader["Phone"];
                     Email = (string)reader["Email"];
-                    NationalCountryID = Convert.ToInt32(reader["NationalCountryID"]);
+                    NationalCountryID = Convert.ToInt32(reader["NationalityCountryID"]);
                     ImagePath = reader["ImagePath"] != DBNull.Value ? (string)reader["ImagePath"] : string.Empty;
                     isFound = true;
                 }

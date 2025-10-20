@@ -204,6 +204,128 @@ namespace DVLD_BusinessLayer
                 return null;
             }
         }
+        static public DataTable FindPersonByNationalNumberAsDataTable(string NationalNO) {
+            string FirstName = "", SecondName = "", ThiredName = "", LastName = "";
+            DateTime DateOfBirth = DateTime.MinValue;
+            int Gendor = 0, NationalCountryID = 0;
+            string Address = "", Phone = "", Email = "", ImagePath = "";
+            int PersonID = -1;
+
+            bool isFound = clsPeopleDataBaseLayer.FindPersonByNationalID(
+                NationalNO,
+                ref PersonID,
+                ref FirstName,
+                ref SecondName,
+                ref ThiredName,
+                ref LastName,
+                ref DateOfBirth,
+                ref Gendor,
+                ref Address,
+                ref Phone,
+                ref Email,
+                ref NationalCountryID,
+                ref ImagePath
+            );
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("PersonID", typeof(int));
+            dt.Columns.Add("NationalNO", typeof(string));
+            dt.Columns.Add("FirstName", typeof(string));
+            dt.Columns.Add("SecondName", typeof(string));
+            dt.Columns.Add("ThiredName", typeof(string));
+            dt.Columns.Add("LastName", typeof(string));
+            dt.Columns.Add("DateOfBirth", typeof(DateTime));
+            dt.Columns.Add("Gendor", typeof(int));
+            dt.Columns.Add("Address", typeof(string));
+            dt.Columns.Add("Phone", typeof(string));
+            dt.Columns.Add("Email", typeof(string));
+            dt.Columns.Add("NationalCountryID", typeof(int));
+            dt.Columns.Add("ImagePath", typeof(string));
+
+            // لو لقينا الشخص نضيف صف واحد
+            if (isFound) {
+                dt.Rows.Add(
+                    PersonID,
+                    NationalNO,
+                    FirstName,
+                    SecondName,
+                    ThiredName,
+                    LastName,
+                    DateOfBirth,
+                    Gendor,
+                    Address,
+                    Phone,
+                    Email,
+                    NationalCountryID,
+                    ImagePath
+                );
+                }
+
+            return dt;
+            }
+
+        static public DataTable FindPersonByID_DataTable(int PersonID) {
+            string NationalNO = "", FirstName = "", SecondName = "", ThiredName = "", LastName = "";
+            DateTime DateOfBirth = DateTime.MinValue;
+            int Gendor = 0, NationalCountryID = 0;
+            string Address = "", Phone = "", Email = "", ImagePath = "";
+
+            bool isFound = clsPeopleDataBaseLayer.FindPersonByID(
+                PersonID,
+                ref NationalNO,
+                ref FirstName,
+                ref SecondName,
+                ref ThiredName,
+                ref LastName,
+                ref DateOfBirth,
+                ref Gendor,
+                ref Address,
+                ref Phone,
+                ref Email,
+                ref NationalCountryID,
+                ref ImagePath
+            );
+
+            DataTable dt = new DataTable();
+
+            // إنشاء الأعمدة
+            dt.Columns.Add("PersonID", typeof(int));
+            dt.Columns.Add("NationalNO", typeof(string));
+            dt.Columns.Add("FirstName", typeof(string));
+            dt.Columns.Add("SecondName", typeof(string));
+            dt.Columns.Add("ThiredName", typeof(string));
+            dt.Columns.Add("LastName", typeof(string));
+            dt.Columns.Add("DateOfBirth", typeof(DateTime));
+            dt.Columns.Add("Gendor", typeof(int));
+            dt.Columns.Add("Address", typeof(string));
+            dt.Columns.Add("Phone", typeof(string));
+            dt.Columns.Add("Email", typeof(string));
+            dt.Columns.Add("NationalCountryID", typeof(int));
+            dt.Columns.Add("ImagePath", typeof(string));
+
+            // لو البيانات اتوجدت، نضيف صف جديد
+            if (isFound) {
+                dt.Rows.Add(
+                    PersonID,
+                    NationalNO,
+                    FirstName,
+                    SecondName,
+                    ThiredName,
+                    LastName,
+                    DateOfBirth,
+                    Gendor,
+                    Address,
+                    Phone,
+                    Email,
+                    NationalCountryID,
+                    ImagePath
+                );
+                }
+
+            return dt;
+            }
+
         static public DataTable GetAllPeople()
         {
             return clsPeopleDataBaseLayer.GetAllPeople();
