@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD.Person;
 using DVLD_BusinessLayer;
 namespace DVLD
 {
@@ -79,24 +80,25 @@ namespace DVLD
         private void textBoxFilter_TextChanged(object sender, EventArgs e) {
             if (comboBoxFilteBy.SelectedIndex == 1 && !string.IsNullOrEmpty(textBoxFilter.Text)) {
                 if (int.TryParse(textBoxFilter.Text, out int personID)) {
-                    _getPersonByID(personID); 
+                    _getPersonByID(personID);
                     }
                 else {
                     _RefreshDate();
 
                     }
                 }
-            else {
-                _RefreshDate();
-                }
-            ///
-            if (comboBoxFilteBy.SelectedIndex == 2 && !string.IsNullOrEmpty(textBoxFilter.Text)) {
+           else if (comboBoxFilteBy.SelectedIndex == 2 && !string.IsNullOrEmpty(textBoxFilter.Text)) {
                 _getPersonNationalID(textBoxFilter.Text);
                 }
             else {
                 _RefreshDate();
                 }
 
+            }
+
+        private void showDetailesToolStripMenuItem_Click(object sender, EventArgs e) {
+            ShowPersonDetailes showDetailsForm = new ShowPersonDetailes(Convert.ToInt32(dataGridViewPeople.CurrentRow.Cells[0].Value));
+            showDetailsForm.ShowDialog();
             }
         }
 }
